@@ -74,6 +74,7 @@ cat > /etc/profile.d/spirecloud-motd.sh << 'EOF'
 
 # SpireCloud MOTD
 # Made by NekoSlayer_
+# Public IP Removed - Clean Version
 
 # Only show once per session
 if [ -n "$BASH" ] && [ -z "$SPIRECLOUD_SHOWN" ]; then
@@ -125,14 +126,11 @@ if [ -n "$BASH" ] && [ -z "$SPIRECLOUD_SHOWN" ]; then
     echo -e " ${WHITE}Disk (/):${NC}     $(df -h / | awk 'NR==2 {print $3 "/" $2 " (" $5 ")"}')"
     echo ""
     
-    # Network
+    # Network Info - LOCAL IP ONLY (Public IP Removed)
     echo -e "${GREEN}🌐 NETWORK INFO${NC}"
     echo -e "${CYAN}───────────────────────────────────────────────────────────${NC}"
     echo -e " ${WHITE}Local IP:${NC}     $(hostname -I | awk '{print $1}')"
-    if command -v curl &>/dev/null; then
-        PUBLIC_IP=$(curl -s -4 ifconfig.co 2>/dev/null || curl -s ipinfo.io/ip 2>/dev/null)
-        [ ! -z "$PUBLIC_IP" ] && echo -e " ${WHITE}Public IP:${NC}    $PUBLIC_IP"
-    fi
+    # PUBLIC IP PART HATAYA - ab sirf local IP dikhega
     echo ""
     
     # Users
@@ -205,7 +203,8 @@ echo -e "${PURPLE}════════════════════�
 echo -e "${YELLOW}📌 NOTES:${NC}"
 echo -e "   • ${WHITE}MOTD will appear on NEXT login${NC}"
 echo -e "   • ${WHITE}Current session mein nahi dikhega${NC}"
-echo -e "   • ${WHITE}Logout kar ke vapas login karo${NC}\n"
+echo -e "   • ${WHITE}Logout kar ke vapas login karo${NC}"
+echo -e "   • ${WHITE}Public IP removed - sirf local IP dikhega${NC}\n"
 
 # Test command
 echo -e "${GREEN}⚡ Manual test:${NC}"
